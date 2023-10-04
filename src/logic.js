@@ -7,6 +7,7 @@ const widget = () => {
     let nextMonth = 15;
     let rightSide = calendar(nextMonth, currentDate);
     let leftSide = monthList(rightSide);
+    return {rightSide, leftSide}
 }
 
 const monthList = (months) => {
@@ -18,16 +19,21 @@ const monthList = (months) => {
 }
 
 const calendar = (nextMonth, currentDate) => {
-    let curMonthInd = currentDate.getMonth();
+    let curMonthInd = currentDate.getMonth() + 1;
     let curYearInd = currentDate.getFullYear();
     let curDayInd = currentDate.getDate();
     let dateObject = [];
     for(let i = 0; i <= nextMonth; i++ ){
         let month = curMonthInd + i > 12 ? curMonthInd + i - 12 : curMonthInd + i;
+        let year = curMonthInd + i > 12 ? curYearInd + 1 : curYearInd;
         let days  = getListDays(month, curYearInd, i, curDayInd);
         dateObject.push({
-            month: months[month - 1],
-            days: days
+            month: {
+                id: month,
+                name: months[month - 1]
+            },
+            days: days,
+            year
         });
     }
     return dateObject;
@@ -36,10 +42,10 @@ const calendar = (nextMonth, currentDate) => {
 const getListDays = (monthID, year, inkrement, curDayInd) =>{
     let daysArray = [];
     let daysOfMonth = new Date(year, monthID, 0).getDate();
-    for (let day = 1; day < daysOfMonth; day++){
+    for (let day = 1; day <= daysOfMonth; day++){
         let dayOfWeek = new Date(year, monthID, day).getDate();
         let dayArray = {
-            disabled: false, // is the day disabled
+            disabled: false, // the day disabled
             number: day, // the number of day
             dayOfWeek: dayOfWeek, // the number of day of week
         };

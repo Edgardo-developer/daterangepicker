@@ -31,3 +31,46 @@
 .originInput{
  visibility: hidden;
 }
+#popupCalendar{
+  color: black;
+  background-color: white;
+  padding: 10px;
+}
+#popupCalendar .popupCalendarDays{
+  display: flex;
+}
+#popupCalendar .popupCalendarDays div{
+  height: 32px;
+  width: 32px;
+  text-align: center;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#popupCalendar .monthDays{
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  max-width: fit-content;
+}
+#popupCalendar .monthDays span{
+  height: 32px;
+  width: 32px;
+  text-align: center;
+}
+#popupCalendar .monthDays span[data-disabled=true]{
+  opacity: 0.5;
+  cursor: default;
+}
+#popupCalendar .monthDays span{
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#popupCalendar .monthDays span:hover, #popupCalendar .monthDays span.active{
+  color: white;
+  background-color: rgb(15, 93, 228);
+  font-weight: 600;
+}
