@@ -59,9 +59,6 @@ const DateRangePicker = (props) => {
                     }
                 }
             }
-            if (checkIn && (dateElement.start || position === 'start')){
-                disabled(checkIn);
-            }
         }
     }
     const CheckInterval = () => {
