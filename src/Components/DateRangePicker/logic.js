@@ -22,20 +22,24 @@ const calendar = (nextMonth, currentDate) => {
     let curMonthInd = currentDate.getMonth();
     let curYearInd = currentDate.getFullYear();
     let curDayInd = currentDate.getDate();
-    let yearCalc = '';
     let month = '';
     let dateObject = [];
     let year = '';
     let days = '';
+    let startYear = false;
     for(let i = 0; i <= nextMonth; i++ ){
-        yearCalc = Math.floor((curMonthInd + i) / 12);
         if ((curMonthInd + i) % 12 > 0){
             month = (curMonthInd + i > 12) ? ((curMonthInd + i) % 12) : (curMonthInd + i);
         }else{
             month = 0
         }
-        year = curYearInd + yearCalc;
+        year = curYearInd + Math.floor((curMonthInd + i) / 12);
         days  = getListDays(month, year, i, curDayInd);
+        if (i === 0){
+            startYear = true;
+        }else{
+            startYear = dateObject[dateObject.length - 1].year !== year;
+        }
         dateObject.push({
             month: {
                 id: month,
@@ -43,7 +47,8 @@ const calendar = (nextMonth, currentDate) => {
                 offset: getMonthOffset(year, month),
             },
             days: days,
-            year
+            year,
+            startYear
         });
     }
     return dateObject;
