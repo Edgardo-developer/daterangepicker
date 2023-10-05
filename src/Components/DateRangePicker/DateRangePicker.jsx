@@ -97,7 +97,7 @@ const DateRangePicker = (props) => {
     }, [checkIn])
     return (
         <div id='popupCalendar'>
-            <MonthListComponent months={logic.rightSide} />
+        <MonthListComponent months={logic.rightSide} />
           <div className="popupCalendar_main">
             <WeekDaysComponent />
             <div className="popupCalendarMonths">

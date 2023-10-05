@@ -42,6 +42,8 @@
 }
 #popupCalendar .popupCalendarDays{
   display: flex;
+  position: sticky;
+  top: 0;
 }
 .popupCalendar_months{
  display: flex;
@@ -101,9 +103,10 @@
 }
 #popupCalendar .popupCalendar_main{
   overflow-y: scroll;
+  scroll-behavior: smooth;
 }
 #popupCalendar .popupCalendarDays{
-  position: fixed;
+  position: sticky;
   background-color: white;
   z-index: 9999;
   border-bottom: 1px solid rgb(229, 229, 229);
@@ -114,9 +117,6 @@
 #popupCalendar .monthName{
   font-size: 20px;
   margin-bottom: 10px;
-}
-#popupCalendar .popupCalendarMonths{
-  margin-top: 60px;
 }
 #popupCalendar .active.end_date{
   border-radius: 0px 5px 5px 0
