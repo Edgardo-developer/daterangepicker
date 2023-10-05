@@ -69,8 +69,11 @@
   justify-content: center;
   align-items: center;
 }
-#popupCalendar .monthDays span:hover, #popupCalendar .monthDays span.active{
+#popupCalendar .monthDays span:hover, #popupCalendar .monthDays span.includes:hover, #popupCalendar .monthDays span.active{
   color: white;
   background-color: rgb(15, 93, 228);
   font-weight: 600;
+}
+#popupCalendar .monthDays span.includes{
+  background-color: rgba(0, 0, 0, 0.05);
 }
