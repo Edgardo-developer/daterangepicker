@@ -7,6 +7,7 @@ const DateRangePicker = (props) => {
     const position = props.data.position;
     const updatePosition = props.updatePosition;
     const updateDate = props.updateDate;
+    const updateCheck = props.updateCheck;
     const dayOfWeek = ['SU', 'MO', 'TU', 'WE', 'TH', 'FR', 'SA'];
     const logic = logicFile();
     const [dateElement, setDateElement] = useState({
@@ -34,23 +35,26 @@ const DateRangePicker = (props) => {
     }
     const chooseToggle = (e) => {
         e.preventDefault();
-        let isActive = e.target.getAttribute('data-disabled') === "true";
-        if(!isActive){
-            let element = e.target;
+        let element = e.target;
+        let isActive = element.getAttribute('data-disabled') === "true";
+        if(!isActive && !element.classList.contains('aciteve')){
             if (element !== dateElement.start &&
                 element !== dateElement.end){
                 let newDate = element.innerText+'/'+element.getAttribute('data-month')+'/'+element.getAttribute('data-year')
-                if (position === 'start'){
-                    updateDate({...date, start: newDate});
-                    setDateElement({...dateElement, start: element})
-                    updatePosition('end');
-                    element.classList.toggle('active');
-                    element.classList.add('start_date');
-                }else if (position === 'end'){
-                    updateDate({...date, end: newDate});
-                    setDateElement({...dateElement, end: element})
-                    element.classList.add('end_date');
-                    element.classList.toggle('active');
+                if (position === 'start' || position === 'end'){
+                    let elementPrev = document.querySelector(position === 'start' ? '.active.start_date' : '.active.end_date');
+                    if (elementPrev){
+                        console.log(elementPrev.classList.remove('active'));
+                    }
+                    element.classList.remove('includes')
+                    updateDate({...date, [position]: newDate});
+                    setDateElement({...dateElement, [position]: element})
+                    element.classList.add('active');
+                    element.classList.add([position]+'_date');
+                    if (position === 'start'){
+                        updatePosition('end');
+                        updateCheck(false);
+                    }
                 }
             }
             if (checkIn && (dateElement.start || position === 'start')){
@@ -62,6 +66,10 @@ const DateRangePicker = (props) => {
         let element = dateElement;
         if (element.end && element.start){
             let dateNumbers = document.querySelectorAll('.DateNumber');
+            let alreadyDateNumbers = document.querySelectorAll('.includes');
+            for (let alreadyDateNumber of alreadyDateNumbers){
+                alreadyDateNumber.classList.remove('includes');
+            }
             let start = false;
             for (let dateNumber of dateNumbers){
                 if (dateNumber === element.end){
@@ -84,17 +92,19 @@ const DateRangePicker = (props) => {
 
     useEffect(() => {
         disabled(checkIn)
-        console.log('h');
     }, [checkIn])
     return (
         <div id='popupCalendar'>
+        <div className="popupCalendar_months">
+            {logic.rightSide.map((monthItem, key) => <a href={"#"+monthItem.month.name+'_'+monthItem.year}>{monthItem.month.name}</a> )}
+        </div>
           <div className="popupCalendar_main">
             <div className="popupCalendarDays">
               {dayOfWeek.map((day, key) =>  <div key={key}>{day}</div>)}
             </div>
             <div className="popupCalendarMonths">
               {logic.rightSide.map((monthItem, key) =>
-                      <div key={key} className="popupCalendarMonth">
+                      <div key={key} className="popupCalendarMonth" id={monthItem.month.name+'_'+monthItem.year}>
                 <h3 className="monthName">{monthItem.month.name}</h3>
                 <div className="monthDays">
                   {monthItem.days.map((day, keyDay) =>

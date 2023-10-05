@@ -4,7 +4,7 @@ const months = [
 ];
 const widget = () => {
     let currentDate = new Date();
-    let nextMonth = 15;
+    let nextMonth = 25;
     let rightSide = calendar(nextMonth, currentDate);
     let leftSide = monthList(rightSide);
     return {rightSide, leftSide}

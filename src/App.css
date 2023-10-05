@@ -34,10 +34,26 @@
 #popupCalendar{
   color: black;
   background-color: white;
-  padding: 10px;
+  display: flex;
+  column-gap: 10px;
+  max-height: 450px;
+  overflow: hidden;
 }
 #popupCalendar .popupCalendarDays{
   display: flex;
+}
+.popupCalendar_months{
+ display: flex;
+  flex-direction: column;
+  width: 150px;
+  font-size: 17px;
+  overflow-y: scroll;
+  background-color: #f4f4f4;
+}
+.popupCalendar_months a{
+  text-decoration: none;
+  color: black;
+  padding: 5px 15px;
 }
 #popupCalendar .popupCalendarDays div{
   height: 32px;
@@ -76,4 +92,7 @@
 }
 #popupCalendar .monthDays span.includes{
   background-color: rgba(0, 0, 0, 0.05);
+}
+.popupCalendar_main{
+  overflow-y: scroll;
 }

@@ -17,6 +17,11 @@ function App() {
     setPosition(newPosition)
   }
   function updateCheck(checkStatus){
+    if (checkStatus){
+      setPosition('start');
+    }else{
+      setPosition('end');
+    }
     setCheckIn(checkStatus);
   }
   return (
@@ -28,10 +33,10 @@ function App() {
         </div>
         <div className="visualInputs">
           <div id="pickInVisual" className="visualInput">
-            <input type="text" placeholder="MM/DD/YYYY" value={date.start} onClick={function(){updateCheck(false)}} inputMode="text" aria-placeholder="MM/DD/YYYY"/>
+            <input type="text" placeholder="MM/DD/YYYY" value={date.start} onClick={function(){updateCheck(true)}} inputMode="text" aria-placeholder="MM/DD/YYYY"/>
           </div>
           <div id="pickOutVisual" className="visualInput">
-            <input type="text" placeholder="MM/DD/YYYY" value={date.end} onClick={function(){updateCheck(true)}} inputMode="text" aria-placeholder="MM/DD/YYYY"/>
+            <input type="text" placeholder="MM/DD/YYYY" value={date.end} onClick={function(){updateCheck(false)}} inputMode="text" aria-placeholder="MM/DD/YYYY"/>
           </div>
         </div>
         <DateRangePicker data={{date, position, checkIn}}
