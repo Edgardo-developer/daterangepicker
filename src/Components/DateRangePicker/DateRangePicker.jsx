@@ -1,5 +1,8 @@
 import logicFile from "./logic";
 import {useEffect, useState} from "react";
+import WeekDaysComponent from "./Components/WeekDaysComponent";
+import CalendarMonthComponent from "./Components/CalendarMonthComponent";
+import MonthListComponent from "./Components/MonthListComponent";
 
 const DateRangePicker = (props) => {
     const date = props.data.date;
@@ -8,7 +11,6 @@ const DateRangePicker = (props) => {
     const updatePosition = props.updatePosition;
     const updateDate = props.updateDate;
     const updateCheck = props.updateCheck;
-    const dayOfWeek = ['SU', 'MO', 'TU', 'WE', 'TH', 'FR', 'SA'];
     const logic = logicFile();
     const [dateElement, setDateElement] = useState({
         start: '',
@@ -44,7 +46,7 @@ const DateRangePicker = (props) => {
                 if (position === 'start' || position === 'end'){
                     let elementPrev = document.querySelector(position === 'start' ? '.active.start_date' : '.active.end_date');
                     if (elementPrev){
-                        console.log(elementPrev.classList.remove('active'));
+                        elementPrev.classList.remove('active');
                     }
                     element.classList.remove('includes')
                     updateDate({...date, [position]: newDate});
@@ -95,26 +97,15 @@ const DateRangePicker = (props) => {
     }, [checkIn])
     return (
         <div id='popupCalendar'>
-        <div className="popupCalendar_months">
-            {logic.rightSide.map((monthItem, key) => <a href={"#"+monthItem.month.name+'_'+monthItem.year}>{monthItem.month.name}</a> )}
-        </div>
+            <MonthListComponent months={logic.rightSide} />
           <div className="popupCalendar_main">
-            <div className="popupCalendarDays">
-              {dayOfWeek.map((day, key) =>  <div key={key}>{day}</div>)}
-            </div>
+            <WeekDaysComponent />
             <div className="popupCalendarMonths">
-              {logic.rightSide.map((monthItem, key) =>
-                      <div key={key} className="popupCalendarMonth" id={monthItem.month.name+'_'+monthItem.year}>
-                <h3 className="monthName">{monthItem.month.name}</h3>
-                <div className="monthDays">
-                  {monthItem.days.map((day, keyDay) =>
-                      <span key={keyDay} onClick={ e => chooseToggle(e)} data-disabled={day.disabled}
-                            data-month={monthItem.month.id} data-year={monthItem.year} className="DateNumber"
-                      >
-                    {day.number}</span> )}
-                </div>
-              </div>
-              )}
+              {logic.rightSide.map((monthItem, key) => <CalendarMonthComponent
+                  monthItem={monthItem}
+                   keyReact={key}
+                   chooseToggle={chooseToggle} />)
+              }
             </div>
             </div>
           </div>

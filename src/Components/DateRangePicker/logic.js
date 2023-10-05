@@ -19,18 +19,28 @@ const monthList = (months) => {
 }
 
 const calendar = (nextMonth, currentDate) => {
-    let curMonthInd = currentDate.getMonth() + 1;
+    let curMonthInd = currentDate.getMonth();
     let curYearInd = currentDate.getFullYear();
     let curDayInd = currentDate.getDate();
+    let yearCalc = '';
+    let month = '';
     let dateObject = [];
+    let year = '';
+    let days = '';
     for(let i = 0; i <= nextMonth; i++ ){
-        let month = curMonthInd + i > 12 ? curMonthInd + i - 12 : curMonthInd + i;
-        let year = curMonthInd + i > 12 ? curYearInd + 1 : curYearInd;
-        let days  = getListDays(month, curYearInd, i, curDayInd);
+        yearCalc = Math.floor((curMonthInd + i) / 12);
+        if ((curMonthInd + i) % 12 > 0){
+            month = (curMonthInd + i > 12) ? ((curMonthInd + i) % 12) : (curMonthInd + i);
+        }else{
+            month = 0
+        }
+        year = curYearInd + yearCalc;
+        days  = getListDays(month, year, i, curDayInd);
         dateObject.push({
             month: {
                 id: month,
-                name: months[month - 1]
+                name: months[month],
+                offset: getMonthOffset(year, month),
             },
             days: days,
             year
@@ -39,11 +49,15 @@ const calendar = (nextMonth, currentDate) => {
     return dateObject;
 }
 
+const getMonthOffset = (year, month) => {
+    return new Date(year, month, 1).getDay();
+}
+
 const getListDays = (monthID, year, inkrement, curDayInd) =>{
     let daysArray = [];
     let daysOfMonth = new Date(year, monthID, 0).getDate();
     for (let day = 1; day <= daysOfMonth; day++){
-        let dayOfWeek = new Date(year, monthID, day).getDate();
+        let dayOfWeek = new Date(year, monthID, day).getDay();
         let dayArray = {
             disabled: false, // the day disabled
             number: day, // the number of day

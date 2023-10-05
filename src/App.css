@@ -38,6 +38,7 @@
   column-gap: 10px;
   max-height: 450px;
   overflow: hidden;
+  border-radius: 5px;
 }
 #popupCalendar .popupCalendarDays{
   display: flex;
@@ -68,6 +69,7 @@
   display: grid;
   grid-template-columns: repeat(7, 1fr);
   max-width: fit-content;
+  row-gap: 3px;
 }
 #popupCalendar .monthDays span{
   height: 32px;
@@ -93,6 +95,28 @@
 #popupCalendar .monthDays span.includes{
   background-color: rgba(0, 0, 0, 0.05);
 }
-.popupCalendar_main{
+#popupCalendar .popupCalendar_main{
   overflow-y: scroll;
+}
+#popupCalendar .popupCalendarDays{
+  position: fixed;
+  background-color: white;
+  z-index: 9999;
+  border-bottom: 1px solid rgb(229, 229, 229);
+}
+#popupCalendar .popupCalendar_main{
+  position: relative;
+}
+#popupCalendar .monthName{
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+#popupCalendar .popupCalendarMonths{
+  margin-top: 60px;
+}
+#popupCalendar .active.end_date{
+  border-radius: 0px 5px 5px 0
+}
+#popupCalendar .active.start_date{
+  border-radius:  5px 0px 0px 5px
 }
