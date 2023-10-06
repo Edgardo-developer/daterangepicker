@@ -11,6 +11,7 @@ const MonthListComponent = (props) => {
     }
     return (
         <div className="popupCalendar_months">
+            <span className="popupCalendar_underLay"></span>
             {months.map((monthItem, key) => <a key={key} href={"#"+monthItem.month.name+'_'+monthItem.year}>
                 {monthItem.month.name}
                 <ShowYear monthItem={monthItem} />

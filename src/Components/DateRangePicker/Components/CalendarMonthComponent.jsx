@@ -5,13 +5,14 @@ const CalendarMonthComponent = (props) => {
     const chooseToggle = props.chooseToggle;
     const key = props.keyReact;
     return (
-        <div key={key} className="popupCalendarMonth" id={monthItem.month.name+'_'+monthItem.year}>
+        <div className="popupCalendarMonth" id={monthItem.month.name+'_'+monthItem.year}>
                 <h3 className="monthName">{monthItem.month.name}</h3>
                 <CalendarDayComponent days={monthItem.days}
                                       monthId={monthItem.month.id}
                                       year={monthItem.year}
                                       chooseToggle={chooseToggle}
-                                      offset={monthItem.month.offset}/>
+                                      offset={monthItem.month.offset}
+                                      key={key}/>
         </div>
     )
 }

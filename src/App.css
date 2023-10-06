@@ -48,10 +48,11 @@
 .popupCalendar_months{
  display: flex;
   flex-direction: column;
-  width: 150px;
+  width: 180px;
   font-size: 17px;
   overflow-y: scroll;
   background-color: #f4f4f4;
+  position: relative;
 }
 .popupCalendar_months a{
   text-decoration: none;
@@ -61,12 +62,17 @@
   justify-content: space-between;
   align-items: baseline;
   font-size: 16px;
+  position: relative;
+  font-weight: 400;
+}
+.popupCalendar_months a:hover{
+  opacity: 0.8;
 }
 #popupCalendar .popupCalendarDays div{
   height: 32px;
   width: 32px;
   text-align: center;
-  font-size: 16px;
+  font-size: 14px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -77,23 +83,21 @@
   max-width: fit-content;
   row-gap: 3px;
 }
-#popupCalendar .monthDays span{
+#popupCalendar .monthDays span.DateNumber{
   height: 32px;
   width: 32px;
   text-align: center;
-}
-#popupCalendar .monthDays span[data-disabled=true]{
-  opacity: 0.5;
-  cursor: default;
-}
-#popupCalendar .monthDays span{
   cursor: pointer;
   font-size: 16px;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-#popupCalendar .monthDays span:hover, #popupCalendar .monthDays span.includes:hover, #popupCalendar .monthDays span.active{
+#popupCalendar .monthDays span.DateNumber[data-disabled=true]{
+  opacity: 0.5;
+  cursor: default;
+}
+#popupCalendar .monthDays span.DateNumber:hover, #popupCalendar .monthDays span.DateNumber.includes:hover, #popupCalendar .monthDays span.active{
   color: white;
   background-color: rgb(15, 93, 228);
   font-weight: 600;
@@ -127,4 +131,11 @@
 .extra_year{
   font-size: 12px;
   opacity: 0.6;
+}
+.popupCalendar_underLay{
+ background-color: white;
+  height: 60px;
+  width: 100%;
+  display: block;
+  position: absolute;
 }

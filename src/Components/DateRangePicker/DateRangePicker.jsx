@@ -11,6 +11,7 @@ const DateRangePicker = (props) => {
     const updatePosition = props.updatePosition;
     const updateDate = props.updateDate;
     const updateCheck = props.updateCheck;
+    const [scrollTop, setScrollTop] = useState(0);
     const logic = logicFile();
     const [dateElement, setDateElement] = useState({
         start: '',
@@ -85,22 +86,51 @@ const DateRangePicker = (props) => {
             }
         }
     }
+    const syncScroll = (e) => {
+        let rigthElement = e.target;
+
+        // The whole height of the scrollable block
+        let RScrollHeight = rigthElement['scrollHeight'];
+        // The distance of the scrolling
+        let RScrollTop = rigthElement['scrollTop'];
+        // The block height
+        let RScrollOffset = rigthElement['offsetHeight'];
+        // The percentage of scrolling
+        let RPercentage = RScrollTop / ((RScrollHeight - RScrollOffset) / 100);
+
+
+        let overflow = document.getElementsByClassName('popupCalendar_underLay')[0];
+        let monthsList = document.getElementsByClassName('popupCalendar_months')[0];
+
+        let MScrollHeight = monthsList['scrollHeight'];
+        let MScrollOffset = monthsList['offsetHeight'];
+        let styleTop = (((MScrollHeight - 60) / 100) * RPercentage);
+        overflow.style.top = styleTop + 'px';
+        console.log(scrollTop, styleTop);
+        if (scrollTop < styleTop && styleTop + 60 > MScrollOffset){
+            // let coordinatesParent = monthsList.getBoundingClientRect();
+            let coordinatesChild = overflow.getBoundingClientRect();
+            monthsList['scrollTop'] += (coordinatesChild.top - 60) - MScrollOffset;
+            setScrollTop(styleTop)
+        }
+    }
     useEffect(() => {
         CheckInterval();
     }, [dateElement]);
-
     useEffect(() => {
         disabled(checkIn)
     }, [checkIn])
     return (
         <div id='popupCalendar'>
         <MonthListComponent months={logic.rightSide} />
-          <div className="popupCalendar_main">
+          <div className="popupCalendar_main" onScroll={e => {
+              syncScroll(e);
+          }}>
             <WeekDaysComponent />
             <div className="popupCalendarMonths">
               {logic.rightSide.map((monthItem, key) => <CalendarMonthComponent
                   monthItem={monthItem}
-                   keyReact={key}
+                   key={key}
                    chooseToggle={chooseToggle} />)
               }
             </div>
