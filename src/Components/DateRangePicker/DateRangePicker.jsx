@@ -102,15 +102,15 @@ const DateRangePicker = (props) => {
         let overflow = document.getElementsByClassName('popupCalendar_underLay')[0];
         let monthsList = document.getElementsByClassName('popupCalendar_months')[0];
 
+
         let MScrollHeight = monthsList['scrollHeight'];
         let MScrollOffset = monthsList['offsetHeight'];
         let styleTop = (((MScrollHeight - 60) / 100) * RPercentage);
         overflow.style.top = styleTop + 'px';
-        console.log(scrollTop, styleTop);
         if (scrollTop < styleTop && styleTop + 60 > MScrollOffset){
             // let coordinatesParent = monthsList.getBoundingClientRect();
             let coordinatesChild = overflow.getBoundingClientRect();
-            monthsList['scrollTop'] += (coordinatesChild.top - 60) - MScrollOffset;
+            monthsList['scrollTop'] += (coordinatesChild.top) - MScrollOffset;
             setScrollTop(styleTop)
         }
     }

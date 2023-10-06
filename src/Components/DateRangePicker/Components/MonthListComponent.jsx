@@ -2,6 +2,7 @@ import {useState} from "react";
 
 const MonthListComponent = (props) => {
     const months = props.months;
+    const underLay = props.underlayTop;
     function ShowYear(props){
         const monthItem = props.monthItem;
         const monthYear = monthItem.year;
@@ -18,14 +19,30 @@ const MonthListComponent = (props) => {
         });
     }
     return (
-        <div className="popupCalendar_months">
-            <span className="popupCalendar_underLay"></span>
-            {months.map((monthItem, key) => <a key={key} onClick={e => {
+        <div className="popupCalendar_months" onScroll={e => {
+            let element = e.target;
+            let behindStatus = 'startFalse';
+            let continueStatus = 'continueFalse';
+            if (element['scrollTop'] > 0){
+                // Check if the element go behind top
+                // Here fix the underlay on Top
+                behindStatus = 'startTrue';
+            }
+            if (Math.round(element['scrollTop'] + element['offsetHeight']) < element['scrollHeight']){
+                // Check if the element go after bottom
+                // Here fix the underlat on bottom
+                continueStatus = 'continueTrue';
+            }
+            // if previous both are false, we should not fix it
+            console.log(behindStatus, continueStatus)
+        }}>
+            <span className="popupCalendar_underLay" style={{top: underLay}}></span>
+            {months.map((monthItem, key) => <div key={key} onClick={e => {
                 monthClickFunc(e, monthItem.month.name, monthItem.year)
-            }} href={"#"}>
+            }}>
                 {monthItem.month.name}
                 <ShowYear monthItem={monthItem} />
-            </a> )}
+            </div> )}
         </div>
     )
 }
