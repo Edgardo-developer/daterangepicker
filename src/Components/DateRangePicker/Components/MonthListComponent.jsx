@@ -9,10 +9,20 @@ const MonthListComponent = (props) => {
             return <span className="extra_year">{monthYear}</span>
         }
     }
+    function monthClickFunc(e, monthName, monthYear){
+        e.preventDefault();
+        document.querySelector('#'+monthName+'_'+monthYear).scrollIntoView({
+            behavior:'smooth',
+            alignToTop: true,
+            block:'start'
+        });
+    }
     return (
         <div className="popupCalendar_months">
             <span className="popupCalendar_underLay"></span>
-            {months.map((monthItem, key) => <a key={key} href={"#"+monthItem.month.name+'_'+monthItem.year}>
+            {months.map((monthItem, key) => <a key={key} onClick={e => {
+                monthClickFunc(e, monthItem.month.name, monthItem.year)
+            }} href={"#"}>
                 {monthItem.month.name}
                 <ShowYear monthItem={monthItem} />
             </a> )}
