@@ -34,11 +34,13 @@
 #popupCalendar{
   color: black;
   background-color: white;
-  display: flex;
   column-gap: 10px;
   max-height: 450px;
   overflow: hidden;
   border-radius: 5px;
+  z-index: 99;
+  position: absolute;
+  left: 0;
 }
 #popupCalendar .popupCalendarDays{
   display: flex;

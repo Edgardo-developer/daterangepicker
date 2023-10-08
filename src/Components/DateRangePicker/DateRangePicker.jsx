@@ -3,9 +3,11 @@ import {useEffect, useState} from "react";
 import WeekDaysComponent from "./Components/WeekDaysComponent";
 import CalendarMonthComponent from "./Components/CalendarMonthComponent";
 import MonthListComponent from "./Components/MonthListComponent";
+import classes from "./App.module.css";
 
 const DateRangePicker = (props) => {
     const date = props.data.date;
+    const show = props.show;
     const checkIn = props.data.checkIn;
     const position = props.data.position;
     const updatePosition = props.updatePosition;
@@ -121,7 +123,7 @@ const DateRangePicker = (props) => {
         disabled(checkIn)
     }, [checkIn])
     return (
-        <div id='popupCalendar'>
+        <div id='popupCalendar' className={show ? classes.show : classes.hide} >
         <MonthListComponent months={logic.rightSide} />
           <div className="popupCalendar_main" onScroll={e => {
               syncScroll(e);
