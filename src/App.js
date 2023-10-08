@@ -1,12 +1,20 @@
 import './App.css';
 import DateRangePicker from "./Components/DateRangePicker/DateRangePicker";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import classes from './Components/DateRangePicker/App.module.css'
 function App() {
   const [date, setDate] = useState({
-    start: '00/00/00',
-    end: '00/00/00',
+    start: '2023/9/8',
+    end: '2023/9/18',
   });
+  const [dateShow, setDateShow] = useState({
+    start: 'Oct 8 2023',
+    end: 'Oct 18 2023',
+  })
+  const months = [
+    'January', 'February', 'March', 'April', 'May', 'June',
+    'July', 'August', 'September', 'October', 'November', 'December'
+  ];
   const [position, setPosition] = useState('start');
   const [checkIn, setCheckIn] = useState(true);
   const [visibleCheck, setVisibleCheck] = useState('');
@@ -48,6 +56,17 @@ function App() {
     }
     setVisibleCheck(clickType)
   }
+  useEffect(() => {
+        let newDate = date;
+        let startDate =  new Date(newDate.start);
+        let endDate =  new Date(newDate.end);
+        setDateShow({
+          start: startDate.toLocaleString('default', { month: 'short' }) + " " +
+              startDate.getDate() + ' ' + startDate.getFullYear(),
+          end: endDate.toLocaleString('default', { month: 'short' }) + ' ' +
+              endDate.getDate() + " " + endDate.getFullYear(),
+        })
+      }, [date])
   return (
     <div className="App">
       <header className="App-header">
@@ -60,12 +79,14 @@ function App() {
           <div className={classes.input_module + ' ' + (visibleCheck === 'check_in' ? classes.input_module_active : '')} onClick={ function (e){
             updateCheck('check_in')
             checkClicks('check_in')
+            updateCheck(true)
             setVisibleCheck('check_in')
             return false
           } }>
               <div className={classes.input_module_label} onClick={ function (e){
                 updateCheck('check_in')
                 checkClicks('check_in')
+                updateCheck(true)
                 setVisibleCheck('check_in')
                 return false
               } }>Check-in</div>
@@ -73,27 +94,31 @@ function App() {
                 updateCheck('check_in')
                 checkClicks('check_in')
                 setVisibleCheck('check_in')
+                updateCheck(true)
                 return false
-              } }>Oct 8 2023</div>
+              } }>{dateShow.start}</div>
             </div>
             <div className={classes.input_module + ' ' + (visibleCheck === 'check_out' ? classes.input_module_active : '')} onClick={ function (e){
               updateCheck('check_out')
               checkClicks('check_out')
               setVisibleCheck('check_out')
+              updateCheck(false)
               return false
             } }>
               <div className={classes.input_module_label} onClick={ function (e){
                 updateCheck('check_out')
                 checkClicks('check_out')
                 setVisibleCheck('check_out')
+                updateCheck(false)
                 return false
               } }>Check-out</div>
               <div className={classes.input_module_control} onClick={ function (e){
                 updateCheck('check_out')
                 checkClicks('check_out')
                 setVisibleCheck('check_out')
+                updateCheck(false)
                 return false
-              } }>Oct 18 2023</div>
+              } }>{dateShow.end}</div>
             </div>
         </div>
         <DateRangePicker

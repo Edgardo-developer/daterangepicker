@@ -3,7 +3,7 @@ import {useState} from "react";
 const CalendarDayComponent = (props) => {
     const days = props.days;
     const monthId = props.monthId;
-    const year = props.monthId;
+    const year = props.year;
     const chooseToggle = props.chooseToggle;
     const fields: JSX.Element[] = [];
     for (let i = 1; i <= props.offset; i++) {

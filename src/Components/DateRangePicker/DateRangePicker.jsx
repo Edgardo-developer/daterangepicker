@@ -45,7 +45,7 @@ const DateRangePicker = (props) => {
         if(!isActive && !element.classList.contains('aciteve')){
             if (element !== dateElement.start &&
                 element !== dateElement.end){
-                let newDate = element.innerText+'/'+element.getAttribute('data-month')+'/'+element.getAttribute('data-year')
+                let newDate = element.getAttribute('data-year') + "/" + element.getAttribute('data-month') + '/' + element.innerText;
                 if (position === 'start' || position === 'end'){
                     let elementPrev = document.querySelector(position === 'start' ? '.active.start_date' : '.active.end_date');
                     if (elementPrev){
@@ -120,7 +120,7 @@ const DateRangePicker = (props) => {
         CheckInterval();
     }, [dateElement]);
     useEffect(() => {
-        disabled(checkIn)
+        disabled(checkIn === 'check_in')
     }, [checkIn])
     return (
         <div id='popupCalendar' className={show ? classes.show : classes.hide} >
