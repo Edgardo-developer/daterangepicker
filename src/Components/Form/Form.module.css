@@ -1,0 +1,54 @@
+.mainButton{
+    background-color: white;
+    color: black;
+    font-size: 16px;
+    padding: 10px;
+}
+.extraButton{
+    opacity: 0.5;
+    font-size: 16px;
+    background-color: white;
+    margin-left: 10px;
+    padding: 10px;
+    border-radius: 5px;
+    color: rgb(45, 49, 55);
+    text-decoration: none;
+    margin-bottom: 10px;
+}
+.formButtons{
+display: flex;
+}
+.form{
+    padding: 10px;
+    background: white;
+    display: flex;
+    column-gap: 20px;
+}
+.inputWrapper{
+    display: flex;
+    flex-direction: column;
+}
+.input_label{
+    font-size: 12px;
+    font-weight: 100;
+}
+.input_module{
+    background-color: white;
+    color: black;
+    border: 1px solid rgb(229, 229, 229);
+    height: 48px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 15px;
+    width: 120px;
+}
+.input_module:hover{
+    border-color: rgb(0, 83, 218)
+}
+.input{
+    border: none;
+    outline: none;
+    font-size: 16px;
+    padding: 0;
+}
