@@ -12,11 +12,11 @@ const FormUpComponent = () => {
                                         className="Tabs-module__icon--3qbIc"
                                         fill="none"><path d="M6 4H3C1.89543 4 1 4.89543 1 6V11C1 12.1046 1.89543 13 3 13H9C10.1046 13 11 12.1046 11 11V8.5"
                                                           stroke="currentColor"
-                                                          stroke-width="2"></path><path d="M8 7L13.5 1.5"
+                                                          strokeWidth="2"></path><path d="M8 7L13.5 1.5"
                                                                                         stroke="currentColor"
-                                                                                        stroke-width="2"></path><path d="M9 1H14V6"
+                                                                                        strokeWidth="2"></path><path d="M9 1H14V6"
                                                                                                                       stroke="currentColor"
-                                                                                                                      stroke-width="2"></path></svg>
+                                                                                                                      strokeWidth="2"></path></svg>
             </a>
         </div>
     )

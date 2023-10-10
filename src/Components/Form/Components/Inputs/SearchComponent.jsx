@@ -1,5 +1,5 @@
 import {useState} from "react";
-import styles from '../Form.module.css'
+import styles from '../../Form.module.css'
 import SearchItem from "./Search/SearchItem";
 const SearchComponent = () => {
     const [regions, setRegions] = useState(['Moscow, Russia', 'Prague, Czech Republic', 'Saint Petersburg, Russia']);
@@ -26,13 +26,13 @@ const SearchComponent = () => {
 
     return (
         <div>
-            <div className={styles.input_module}>
+            <div className={styles.input_module + ' ' + styles.input_module_search}>
                 <label htmlFor="search" className={styles.input_label} onClick={
                     function (){
                         setShow(!show)
                     }
                 }>Destination</label>
-                <input type="text" id={'search'}  value={search} className={styles.input} onClick={
+                <input type="text" id={'search'}  value={search} className={styles.input + ' ' + styles.input_search} onClick={
                     function (){
                         setShow(!show)
                     }

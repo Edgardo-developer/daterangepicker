@@ -41,7 +41,7 @@ display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 0 15px;
-    width: 315px;
+    width: 130px;
     position: relative;
 }
 .input_module:hover{
@@ -52,6 +52,8 @@ display: flex;
     outline: none;
     font-size: 16px;
     padding: 0;
+    display: flex;
+    justify-content: space-between;
 }
 .popup{
     position: absolute;
@@ -96,4 +98,70 @@ display: flex;
 }
 .search_item_content{
     max-width: calc(100% - 33px)
+}
+.input_search{
+    width: 315px;
+}
+.input_module_search{
+    max-width: 315px;
+    width: 100%;
+}
+.popup_rooms{
+    padding: 30px;
+    width: 370px;
+    max-height: 300px;
+    overflow-y: scroll;
+}
+.rooms_wrapper{
+    display: flex;
+    column-gap: 20px;
+}
+.room_adults{
+    max-width: 30%;
+    width: 100%;
+}
+.room_children{
+    max-width: 60%;
+    width: 100%;
+}
+.room_heading{
+    font-size: 20px;
+    font-weight: 600;
+}
+.room_add{
+    align-items: center;
+    color: rgb(15, 93, 228);
+    display: inline-flex;
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: 500;
+    line-height: 22px;
+    position: relative;
+    user-select: none;
+    width: 100%;
+    cursor: pointer;
+}
+.room_adults_buttons_wrapper{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid rgb(229, 229, 229);
+    border-radius: 5px;
+}
+.room_adults_button{
+    background: none;
+    border: none;
+    box-sizing: border-box;
+    color: rgb(45, 49, 55);
+    font-size: 24px;
+    height: 36px;
+    line-height: 30px;
+    overflow: hidden;
+    width: 36px;
+    padding: 0;
+    cursor: pointer;
+}
+.room_adults_number{
+    font-size: 16px;
 }
