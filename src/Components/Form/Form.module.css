@@ -64,6 +64,7 @@ display: flex;
     top: 50px;
     width: 100%;
     box-sizing: border-box;
+    box-shadow: 0 2px 12px 0 rgba(45, 49, 55, 0.3);
 }
 .popup_active{
     visibility: visible;
@@ -107,61 +108,12 @@ display: flex;
     width: 100%;
 }
 .popup_rooms{
-    padding: 30px;
+    padding: 30px 30px 0px 30px;
     width: 370px;
     max-height: 300px;
     overflow-y: scroll;
 }
-.rooms_wrapper{
+.input_module_wrapper{
     display: flex;
-    column-gap: 20px;
-}
-.room_adults{
-    max-width: 30%;
-    width: 100%;
-}
-.room_children{
-    max-width: 60%;
-    width: 100%;
-}
-.room_heading{
-    font-size: 20px;
-    font-weight: 600;
-}
-.room_add{
-    align-items: center;
-    color: rgb(15, 93, 228);
-    display: inline-flex;
-    font-size: 16px;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-    font-weight: 500;
-    line-height: 22px;
-    position: relative;
-    user-select: none;
-    width: 100%;
-    cursor: pointer;
-}
-.room_adults_buttons_wrapper{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border: 1px solid rgb(229, 229, 229);
-    border-radius: 5px;
-}
-.room_adults_button{
-    background: none;
-    border: none;
-    box-sizing: border-box;
-    color: rgb(45, 49, 55);
-    font-size: 24px;
-    height: 36px;
-    line-height: 30px;
-    overflow: hidden;
-    width: 36px;
-    padding: 0;
-    cursor: pointer;
-}
-.room_adults_number{
-    font-size: 16px;
+    flex-direction: column;
 }

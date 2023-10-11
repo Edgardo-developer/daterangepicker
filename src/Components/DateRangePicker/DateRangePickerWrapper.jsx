@@ -3,7 +3,9 @@ import ButtonsComponent from "./Components/ButtonsComponent";
 import DateRangePicker from "./DateRangePicker";
 import {useEffect, useState} from "react";
 
-const DateRangePickerWrapper = () => {
+const DateRangePickerWrapper = (props) => {
+    const popupType = props.popup;
+    const changePopup = props.changePopup;
     const [date, setDate] = useState({
         start: '2023/9/8',
         end: '2023/9/18',
@@ -77,8 +79,9 @@ const DateRangePickerWrapper = () => {
               <input type="date" id='pickInOriginal' value={date.start} className='originInput' />
               <input type="date" id='pickOutOriginal' value={date.end} className='originInput' />
             </div>
-          <ButtonsComponent visibleCheck={visibleCheck} clickBook={clickBook} dateShow={dateShow}/>
+          <ButtonsComponent popupType={popupType} changePopup={changePopup} visibleCheck={visibleCheck} clickBook={clickBook} dateShow={dateShow}/>
           <DateRangePicker
+              popup={popupType}
               show={show}
               data={{date, position, checkIn}}
               updateDate={setNewDate}

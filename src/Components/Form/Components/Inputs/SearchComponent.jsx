@@ -1,10 +1,16 @@
 import {useState} from "react";
 import styles from '../../Form.module.css'
 import SearchItem from "./Search/SearchItem";
-const SearchComponent = () => {
+const SearchComponent = (props) => {
+    const popupType = props.popup;
+    const changePopup = props.changePopup;
     const [regions, setRegions] = useState(['Moscow, Russia', 'Prague, Czech Republic', 'Saint Petersburg, Russia']);
     const [search, setSearch] = useState('Moscow, Russia')
     const [show, setShow] = useState(false);
+    const popupChange = (e) => {
+        e.preventDefault()
+        popupType === 'search' ? changePopup(e, '') : changePopup('search')
+    }
     const [hotels, setHotels] = useState([
         {
             name: 'Avenue-Apart Na Malom Apart-Otel',
@@ -26,18 +32,12 @@ const SearchComponent = () => {
 
     return (
         <div>
-            <div className={styles.input_module + ' ' + styles.input_module_search}>
-                <label htmlFor="search" className={styles.input_label} onClick={
-                    function (){
-                        setShow(!show)
-                    }
-                }>Destination</label>
-                <input type="text" id={'search'}  value={search} className={styles.input + ' ' + styles.input_search} onClick={
-                    function (){
-                        setShow(!show)
-                    }
-                }/>
-                <div className={styles.popup + ' ' +(show ? styles.popup_active : '')}>
+            <div className={styles.input_module + ' ' + styles.input_module_search} onClick={(e) => {
+                popupChange(e)}}>
+                <label htmlFor="search" className={styles.input_label}>Destination</label>
+                <input type="text" id={'search'} value={search}
+                       className={styles.input + ' ' + styles.input_search} />
+                <div className={styles.popup + ' ' +( popupType === 'search' ? styles.popup_active : '')}>
                     <div className={styles.popup_separator}>Regions</div>
                         {regions.map((region, k) => <SearchItem key={k} searchUpdate={setSearch} type='region' item={region}/>
                         )}

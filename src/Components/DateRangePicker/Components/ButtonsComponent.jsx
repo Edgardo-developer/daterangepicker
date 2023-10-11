@@ -4,8 +4,16 @@ const ButtonsComponent = (props) => {
     const visibleCheck = props.visibleCheck;
     const clickBook = props.clickBook;
     const dateShow = props.dateShow;
+    const popupType = props.popup;
+    const changePopup = props.changePopup;
+    const popupChange = (e) => {
+        e.preventDefault()
+        popupType === 'check' ? changePopup('') : changePopup('check')
+    }
     return (
-        <div className={classes.visualInputss}>
+        <div className={classes.visualInputss} onClick={(e) => {
+            popupChange(e)
+        }}>
           <div className={classes.input_module + ' ' + (visibleCheck === 'check_in' ? classes.input_module_active : '')}
                onClick={ function (e){
                    clickBook('check_in')

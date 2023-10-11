@@ -6,8 +6,8 @@ import MonthListComponent from "./Components/MonthListComponent";
 import classes from "./App.module.css";
 
 const DateRangePicker = (props) => {
+    const popupType = props.popup;
     const date = props.data.date;
-    const show = props.show;
     const checkIn = props.data.checkIn;
     const position = props.data.position;
     const updatePosition = props.updatePosition;
@@ -120,10 +120,11 @@ const DateRangePicker = (props) => {
         CheckInterval();
     }, [dateElement]);
     useEffect(() => {
+        console.log(popupType);
         disabled(checkIn === 'check_in')
     }, [checkIn])
     return (
-        <div id='popupCalendar' className={show ? classes.show : classes.hide} >
+        <div id='popupCalendar' className={popupType === 'check' ? classes.show : classes.hide} >
         <MonthListComponent months={logic.rightSide} />
           <div className="popupCalendar_main" onScroll={e => {
               syncScroll(e);
