@@ -1,6 +1,7 @@
 import {useState} from "react";
 import styles from '../../Form.module.css'
 import SearchItem from "./Search/SearchItem";
+import FormStyles from "../../Form.module.css";
 const SearchComponent = (props) => {
     const popupType = props.popup;
     const changePopup = props.changePopup;
@@ -32,11 +33,13 @@ const SearchComponent = (props) => {
 
     return (
         <div>
-            <div className={styles.input_module + ' ' + styles.input_module_search} onClick={(e) => {
+            <div className={styles.input_module_searchWrapper} onClick={(e) => {
                 popupChange(e)}}>
-                <label htmlFor="search" className={styles.input_label}>Destination</label>
+                <div className={styles.input_module + ' ' + styles.input_module_search + ' ' + (popupType === 'search' ? FormStyles.active_field : '')}>
+                    <label htmlFor="search" className={styles.input_label}>Destination</label>
                 <input type="text" id={'search'} value={search}
                        className={styles.input + ' ' + styles.input_search} />
+                </div>
                 <div className={styles.popup + ' ' +( popupType === 'search' ? styles.popup_active : '')}>
                     <div className={styles.popup_separator}>Regions</div>
                         {regions.map((region, k) => <SearchItem key={k} searchUpdate={setSearch} type='region' item={region}/>

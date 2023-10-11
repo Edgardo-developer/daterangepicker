@@ -11,7 +11,7 @@ const FormDownComponent = () => {
         setPopupType(text)
     }
     return (
-        <div className={styles.form}>
+        <div className={styles.formDown}>
             <SearchComponent popup={popupType} changePopup={togglePopup} />
             <DateRangePickerWrapper popup={popupType} changePopup={togglePopup} />
             <RoomsComponent popup={popupType} changePopup={togglePopup} />

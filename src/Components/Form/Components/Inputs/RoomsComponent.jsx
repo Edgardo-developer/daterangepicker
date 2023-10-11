@@ -40,12 +40,12 @@ const RoomsComponent = (props) => {
         setGuest(guests)
     }, [rooms])
     return (
-        <div className={FormStyles.input_module}>
+        <div className={FormStyles.input_module + ' ' + (popupType === 'rooms' ? FormStyles.active_field : '')}>
                 <div className={FormStyles.input_module_wrapper} onClick={(e) => {
                     popupChange(e);
                 }}>
 <label htmlFor="search" className={FormStyles.input_label}>{rooms.length} room</label>
-                <div className={FormStyles.input}>{guest} guest
+                <div className={FormStyles.input + ' ' + styles.input_room}>{guest} guest
 
                     <svg width="20"
                                                                  height="20"

@@ -123,7 +123,7 @@ const DateRangePicker = (props) => {
         disabled(checkIn === 'check_in')
     }, [checkIn])
     return (
-        <div id='popupCalendar' className={popupType === 'check' ? classes.show : classes.hide} >
+        <div id='popupCalendar' className={(popupType === 'check_in' || popupType === 'check_out') ? classes.show : classes.hide} >
         <MonthListComponent months={logic.rightSide} />
           <div className="popupCalendar_main" onScroll={e => {
               syncScroll(e);

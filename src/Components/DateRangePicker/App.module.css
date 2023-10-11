@@ -43,3 +43,9 @@
 .originInputs{
     display: none;
 }
+.input_check_in{
+    border-radius: 5px 0 0 5px !important;
+}
+.input_check_out{
+    border-radius: 0 5px 5px 0 !important;
+}

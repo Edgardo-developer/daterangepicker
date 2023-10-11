@@ -117,3 +117,6 @@
 .guestsSVG_active{
     transform: rotate(180deg);
 }
+.input_room{
+    cursor: default;
+}
