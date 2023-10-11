@@ -4,7 +4,7 @@ const ButtonsComponent = (props) => {
     const visibleCheck = props.visibleCheck;
     const clickBook = props.clickBook;
     const dateShow = props.dateShow;
-    const popupType = props.popup;
+    const popupType = props.popupType;
     const changePopup = props.changePopup;
     const popupChange = (e) => {
         e.preventDefault()

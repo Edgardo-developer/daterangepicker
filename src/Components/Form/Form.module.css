@@ -41,7 +41,9 @@ display: flex;
     flex-direction: column;
     justify-content: center;
     padding: 0 15px;
-    width: 130px;
+    width: 145px;
+    max-width: 100%;
+    box-sizing: border-box;
     position: relative;
 }
 .input_module:hover{
@@ -102,10 +104,12 @@ display: flex;
 }
 .input_search{
     width: 315px;
+    max-width: 100%;
 }
 .input_module_search{
     max-width: 315px;
     width: 100%;
+    box-sizing: border-box;
 }
 .popup_rooms{
     padding: 30px 30px 0px 30px;

@@ -81,7 +81,7 @@ const DateRangePickerWrapper = (props) => {
             </div>
           <ButtonsComponent popupType={popupType} changePopup={changePopup} visibleCheck={visibleCheck} clickBook={clickBook} dateShow={dateShow}/>
           <DateRangePicker
-              popup={popupType}
+              popupType={popupType}
               show={show}
               data={{date, position, checkIn}}
               updateDate={setNewDate}

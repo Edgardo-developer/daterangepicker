@@ -5,7 +5,12 @@
     cursor: pointer;
     padding: 0 20px;
     color: white;
-    margin: 8px;
     font-size: 18px;
     height: 48px;
+    max-width: 100%;
+    width: 100%;
+}
+.buttonSearchWrapper{
+    max-width: 15%;
+    width: 100%;
 }

@@ -6,7 +6,7 @@ import MonthListComponent from "./Components/MonthListComponent";
 import classes from "./App.module.css";
 
 const DateRangePicker = (props) => {
-    const popupType = props.popup;
+    const popupType = props.popupType;
     const date = props.data.date;
     const checkIn = props.data.checkIn;
     const position = props.data.position;
@@ -120,7 +120,6 @@ const DateRangePicker = (props) => {
         CheckInterval();
     }, [dateElement]);
     useEffect(() => {
-        console.log(popupType);
         disabled(checkIn === 'check_in')
     }, [checkIn])
     return (

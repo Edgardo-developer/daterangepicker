@@ -3,6 +3,7 @@ import DateRangePickerWrapper from "../../DateRangePicker/DateRangePickerWrapper
 import SearchComponent from "./Inputs/SearchComponent";
 import RoomsComponent from "./Inputs/RoomsComponent";
 import {useState} from "react";
+import Button from "../../Global/Button";
 
 const FormDownComponent = () => {
     const [popupType, setPopupType] = useState();
@@ -14,6 +15,7 @@ const FormDownComponent = () => {
             <SearchComponent popup={popupType} changePopup={togglePopup} />
             <DateRangePickerWrapper popup={popupType} changePopup={togglePopup} />
             <RoomsComponent popup={popupType} changePopup={togglePopup} />
+            <Button text="Search" />
         </div>
     )
 }
