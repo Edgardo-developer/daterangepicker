@@ -73,4 +73,7 @@
     .input_check_in, .input_check_out{
         max-width: 100%;
     }
+    .popupCalendar_months{
+        display: none;
+    }
 }

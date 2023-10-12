@@ -142,3 +142,27 @@
   display: block;
   position: absolute;
 }
+@media only screen and (max-width: 680px){
+  .popupCalendar_months{
+    display: none;
+  }
+  #popupCalendar{
+    max-width: 100%;
+    width: 100%;
+  }
+  .popupCalendar_main{
+    width: 340px;
+    margin: 0 auto;
+  }
+  .popupCalendarDays div{
+    flex: 1;
+  }
+  #popupCalendar .monthDays span.DateNumber{
+    flex: 1;
+    width: 100%;
+  }
+  #popupCalendar .monthDays{
+    width: 100%;
+    max-width: 100%;
+  }
+}

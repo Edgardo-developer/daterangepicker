@@ -3,10 +3,14 @@ import FormStyles from "../Form/Form.module.css";
 import ButtonsComponent from "./Components/ButtonsComponent";
 import DateRangePicker from "./DateRangePicker";
 import {useEffect, useState} from "react";
+import FormPopup from "../Form/Components/Inputs/Extra/FormPopup";
+import GoBackMobile from "../Form/Components/Inputs/Extra/GoBackMobile";
+import styles from "../Form/Components/Inputs/Rooms/rooms.module.css";
 
 const DateRangePickerWrapper = (props) => {
     const popupType = props.popup;
     const changePopup = props.changePopup;
+    const isMobile = props.isMobile;
     const [date, setDate] = useState({
         start: '2023/9/8',
         end: '2023/9/18',
@@ -75,20 +79,22 @@ const DateRangePickerWrapper = (props) => {
         })
     }, [date])
     return(
-        <div className={FormStyles.formDownItem + " " + classes.daterangepicker_wrapper}>
-            <div className={classes.originInputs}>
-              <input type="date" id='pickInOriginal' value={date.start} className='originInput' />
-              <input type="date" id='pickOutOriginal' value={date.end} className='originInput' />
+        <div className={((isMobile && (popupType === 'check_in' || popupType === 'check_out')) ? FormStyles.fieldMobile : " ") + " " + FormStyles.formDownItem + " " + classes.daterangepicker_wrapper}>
+            <div className={(isMobile && FormStyles.popupMobileHeading)}>
+                {(isMobile && popupType === 'search') && <GoBackMobile onClick={(e) => {changePopup(e)}} />}
+                <ButtonsComponent popupType={popupType} changePopup={changePopup} visibleCheck={visibleCheck} clickBook={clickBook} dateShow={dateShow}/>
             </div>
-          <ButtonsComponent popupType={popupType} changePopup={changePopup} visibleCheck={visibleCheck} clickBook={clickBook} dateShow={dateShow}/>
-          <DateRangePicker
-              popupType={popupType}
-              show={show}
-              data={{date, position, checkIn}}
-              updateDate={setNewDate}
-              updatePosition={updatePosition}
-              updateCheck={updateCheck} />
-          </div>
+            <FormPopup popupTypeCheck={popupType === 'check_in' || popupType === 'check_out'}>
+                <DateRangePicker
+                    popupType={popupType}
+                    show={show}
+                    data={{date, position, checkIn}}
+                    updateDate={setNewDate}
+                    updatePosition={updatePosition}
+                    isMobile={isMobile}
+                    updateCheck={updateCheck} />
+            </FormPopup>
+        </div>
     )
 }
 export default DateRangePickerWrapper;
