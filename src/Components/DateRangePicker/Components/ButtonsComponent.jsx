@@ -1,5 +1,5 @@
 import formStyles from "../../Form/Form.module.css";
-import classes from "../App.module.css";
+import classes from "../drp.module.css";
 
 const ButtonsComponent = (props) => {
     const visibleCheck = props.visibleCheck;

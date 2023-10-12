@@ -1,4 +1,4 @@
-import styles from "../../../Form.module.css";
+import styles from "./Search.module.css";
 
 const SearchItem = (props) => {
     const type = props.type;

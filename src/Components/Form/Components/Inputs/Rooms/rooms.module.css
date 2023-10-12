@@ -1,5 +1,9 @@
 .room_children_wrapper{
-
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    column-gap: 10px;
+    row-gap: 10px;
 }
 .room_remove{
     color: #ce2121;
@@ -105,7 +109,6 @@
     font-size: 16px;
     font-weight: 500;
     width: fit-content;
-    margin-bottom: 10px;
     display: flex;
     align-items: center;
 }

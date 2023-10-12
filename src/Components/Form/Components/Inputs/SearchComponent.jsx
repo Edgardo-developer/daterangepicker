@@ -1,13 +1,12 @@
 import {useState} from "react";
 import styles from '../../Form.module.css'
 import SearchItem from "./Search/SearchItem";
-import FormStyles from "../../Form.module.css";
+import searchStyles from './Search/Search.module.css';
 const SearchComponent = (props) => {
     const popupType = props.popup;
     const changePopup = props.changePopup;
     const [regions, setRegions] = useState(['Moscow, Russia', 'Prague, Czech Republic', 'Saint Petersburg, Russia']);
     const [search, setSearch] = useState('Moscow, Russia')
-    const [show, setShow] = useState(false);
     const popupChange = (e) => {
         e.preventDefault()
         popupType === 'search' ? changePopup(e, '') : changePopup('search')
@@ -32,22 +31,20 @@ const SearchComponent = (props) => {
         }])
 
     return (
-        <div>
-            <div className={styles.input_module_searchWrapper} onClick={(e) => {
-                popupChange(e)}}>
-                <div className={styles.input_module + ' ' + styles.input_module_search + ' ' + (popupType === 'search' ? FormStyles.active_field : '')}>
-                    <label htmlFor="search" className={styles.input_label}>Destination</label>
-                <input type="text" id={'search'} value={search}
-                       className={styles.input + ' ' + styles.input_search} />
-                </div>
-                <div className={styles.popup + ' ' +( popupType === 'search' ? styles.popup_active : '')}>
-                    <div className={styles.popup_separator}>Regions</div>
-                        {regions.map((region, k) => <SearchItem key={k} searchUpdate={setSearch} type='region' item={region}/>
-                        )}
-                        <div className={styles.popup_separator}>Hotels</div>
-                        {hotels.map((hotel, k) => <SearchItem key={k} searchUpdate={setSearch} type="hotel" item={hotel}/>
-                        )}
-                </div>
+        <div className={searchStyles.input_module_searchWrapper} onClick={(e) => {
+            popupChange(e)}}>
+            <div className={styles.input_module + ' ' + searchStyles.input_module_search + ' ' + (popupType === 'search' ? styles.active_field : '')}>
+                <label htmlFor="search" className={styles.input_label}>Destination</label>
+            <input type="text" id={'search'} value={search}
+                   className={styles.input + ' ' + searchStyles.input_search} />
+            </div>
+            <div className={styles.popup + ' ' +( popupType === 'search' ? styles.popup_active : '')}>
+                <div className={styles.popup_separator}>Regions</div>
+                    {regions.map((region, k) => <SearchItem key={k} searchUpdate={setSearch} type='region' item={region}/>
+                    )}
+                    <div className={styles.popup_separator}>Hotels</div>
+                    {hotels.map((hotel, k) => <SearchItem key={k} searchUpdate={setSearch} type="hotel" item={hotel}/>
+                    )}
             </div>
         </div>
     )
