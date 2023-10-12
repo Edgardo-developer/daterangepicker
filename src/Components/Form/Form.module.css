@@ -146,6 +146,9 @@ display: flex;
     }
 }
 @media only screen and (max-width: 680px) {
+    .popup_active{
+        position: relative;
+    }
     .formDown{
         flex-direction: column;
     }

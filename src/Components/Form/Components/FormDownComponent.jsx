@@ -14,7 +14,7 @@ const FormDownComponent = () => {
         setPopupType(popupType === text ? '' : text)
     }
     useEffect(() => {
-        if (window.innerWidth < 860){
+        if (window.innerWidth < 680){
             setIsMobile(true);
         }
         document.addEventListener("mousedown", (e) => {

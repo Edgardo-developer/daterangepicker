@@ -42,7 +42,7 @@ const RoomsComponent = (props) => {
     }, [rooms])
     return (
         <div className={((isMobile && popupType === 'rooms') && FormStyles.fieldMobile) + " " + FormStyles.formDownItem  + ' ' + styles.room_input_module}>
-            <div className={((isMobile && popupType === 'rooms') && FormStyles.popupMobileHeading)}>
+            <div className={(isMobile && popupType === 'rooms') ? FormStyles.popupMobileHeading : ''}>
                 {(isMobile && popupType === 'rooms') && <GoBackMobile onClick={(e) => {popupChange(e)}} />}
                 <div className={FormStyles.input_module + " " + (popupType === 'rooms' ? FormStyles.active_field : '')}>
                 <div className={FormStyles.input_module_wrapper} onClick={(e) => {

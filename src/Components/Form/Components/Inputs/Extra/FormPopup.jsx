@@ -8,7 +8,7 @@ const FormPopup = (props) => {
     const extraClasses = props.extraClasses ? props.extraClasses : "";
     return (
         <div className={FormStyles.popup + ' ' +
-            ((isMobile && popupTypeCheck) && FormStyles.popupMobile) + " " +
+            // ((isMobile && popupTypeCheck) && FormStyles.popupMobile) + " " +
             ( popupTypeCheck ? FormStyles.popup_active : '') + " " + extraClasses}
         >
             {children}
