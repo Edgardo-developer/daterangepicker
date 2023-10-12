@@ -1,6 +1,8 @@
 .visualInputss{
     display: flex;
     align-items: center;
+    width: 100%;
+    max-width: 100%;
 }
 .visualInputss *{
     cursor: pointer;
@@ -40,13 +42,35 @@
 }
 .daterangepicker_wrapper{
     position: relative;
+    max-width: 300px;
+    width: 100%;
 }
 .originInputs{
     display: none;
 }
 .input_check_in{
     border-radius: 5px 0 0 5px !important;
+    flex-grow: 1;
 }
 .input_check_out{
     border-radius: 0 5px 5px 0 !important;
+    flex-grow: 1;
+}
+@media only screen and (max-width: 1075px) {
+    .visualInputss{
+        box-sizing: border-box;
+    }
+    .input_check_in, .input_check_out{
+        max-width: 165px;
+        width: 100%;
+        min-width: 120px;
+    }
+    .daterangepicker_wrapper{
+        width: auto;
+    }
+}
+@media only screen and (max-width: 670px) {
+    .input_check_in, .input_check_out{
+        max-width: 100%;
+    }
 }

@@ -33,7 +33,7 @@ const RoomItem = (props) => {
     }
     return(
         <div>
-            {key !== 0 && <hr />}
+            {key !== 0 && <hr className={styles.roomHr}/>}
             <div className={styles.room_header}>
                 <div className={styles.room_heading}>Room {key + 1}</div>
                 <div className={styles.room_remove} onClick={() => {
@@ -42,7 +42,7 @@ const RoomItem = (props) => {
             </div>
             <div className={styles.rooms_wrapper}>
                 <div className={styles.room_adults}>
-                    <span className={globalStyles.input_label}>Adults</span>
+                    <span className={globalStyles.input_label +' ' + styles.inputLabel}>Adults</span>
                     <div className={styles.room_adults_buttons_wrapper}>
                         <button onClick={() => {
                             changeAdults('minus')
@@ -54,7 +54,7 @@ const RoomItem = (props) => {
                     </div>
                 </div>
                 <div className={styles.room_children}>
-                    <span className={globalStyles.input_label}>Children</span>
+                    <span className={globalStyles.input_label + ' ' + styles.inputLabel}>Children</span>
                     <div className={styles.room_children_wrapper}>
                         {room.children.map((child, childId) =>
                             <ChildrenComponent key={childId} childId={childId} item={child} removeChildren={manipulateChildren} />

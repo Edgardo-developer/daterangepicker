@@ -40,7 +40,7 @@ const RoomsComponent = (props) => {
         setGuest(guests)
     }, [rooms])
     return (
-        <div className={FormStyles.input_module + ' ' + (popupType === 'rooms' ? FormStyles.active_field : '')}>
+        <div className={FormStyles.formDownItem + " " + FormStyles.input_module + ' ' + styles.room_input_module + ' ' + (popupType === 'rooms' ? FormStyles.active_field : '')}>
                 <div className={FormStyles.input_module_wrapper} onClick={(e) => {
                     popupChange(e);
                 }}>

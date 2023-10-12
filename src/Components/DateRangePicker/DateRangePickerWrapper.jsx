@@ -1,4 +1,5 @@
 import classes from "./drp.module.css";
+import FormStyles from "../Form/Form.module.css";
 import ButtonsComponent from "./Components/ButtonsComponent";
 import DateRangePicker from "./DateRangePicker";
 import {useEffect, useState} from "react";
@@ -74,7 +75,7 @@ const DateRangePickerWrapper = (props) => {
         })
     }, [date])
     return(
-        <div className={classes.daterangepicker_wrapper}>
+        <div className={FormStyles.formDownItem + " " + classes.daterangepicker_wrapper}>
             <div className={classes.originInputs}>
               <input type="date" id='pickInOriginal' value={date.start} className='originInput' />
               <input type="date" id='pickOutOriginal' value={date.end} className='originInput' />

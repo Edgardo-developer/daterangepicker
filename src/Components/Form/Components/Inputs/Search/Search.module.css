@@ -36,3 +36,12 @@
 .input_module_searchWrapper{
     position: relative;
 }
+@media only screen and (max-width: 1075px) {
+    .input_module_searchWrapper{
+        width: 100%;
+    }
+    .input_module_search{
+        max-width: 100%;
+        width: 100%;
+    }
+}

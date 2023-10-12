@@ -11,6 +11,20 @@
     width: 100%;
 }
 .buttonSearchWrapper{
-    max-width: 15%;
+    width: 15%;
+    max-width: 100%;
+}
+.buttonWrapper{
     width: 100%;
+    max-width: 100%;
+}
+@media only screen and (max-width: 1075px) {
+    .buttonSearchWrapper{
+        width: 30%;
+    }
+}
+@media only screen and (max-width: 670px) {
+    .buttonSearchWrapper{
+        order: 3;
+    }
 }

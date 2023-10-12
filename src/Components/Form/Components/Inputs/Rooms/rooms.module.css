@@ -64,6 +64,7 @@
 .room_heading{
     font-size: 20px;
     font-weight: 600;
+    margin-bottom: 12px;
 }
 .room_add{
     align-items: center;
@@ -122,4 +123,17 @@
 }
 .input_room{
     cursor: default;
+}
+.room_input_module{
+    max-width: 136px;
+    width: 100%;
+}
+.inputLabel{
+    margin-bottom: 10px;
+}
+.roomHr{
+    margin: 16px 0;
+}
+@media only screen and (max-width: 1075px) {
+
 }

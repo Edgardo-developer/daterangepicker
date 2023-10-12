@@ -28,7 +28,7 @@ const ButtonsComponent = (props) => {
             <div className={formStyles.input_module + ' ' + classes.input_check_out + ' ' + ((visibleCheck === 'check_out' && popupType === 'check_out') ? classes.input_module_active : '')} onClick={ function (e){
                 clickChange(e, 'check_out')
             } }>
-              <div className={classes.input_module_label + ' ' + classes.input_check_out} onClick={ function (e){
+              <div className={classes.input_module_label} onClick={ function (e){
                   clickChange(e, 'check_out')
               } }>Check-out</div>
               <div className={classes.input_module_control} onClick={ function (e){

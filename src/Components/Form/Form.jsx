@@ -5,11 +5,10 @@ import styles from "./Form.module.css"
 import {useEffect} from "react";
 const Form = () => {
     return(
-        <div>
+        <div className={styles.formWrapper}>
             <FormUpComponent />
             <div className={styles.form}>
                 <FormDownComponent />
-                <FormCheckBox />
             </div>
         </div>
     )

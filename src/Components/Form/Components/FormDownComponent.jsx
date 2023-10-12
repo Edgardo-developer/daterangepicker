@@ -6,6 +6,7 @@ import {useEffect, useState} from "react";
 import Button from "../../Global/Button";
 import FormStyle from "../Form.module.css";
 import DateRangePickerStyle from "../../DateRangePicker/drp.module.css";
+import FormCheckBox from "./FormCheckBox";
 
 const FormDownComponent = () => {
     const [popupType, setPopupType] = useState();
@@ -25,6 +26,7 @@ const FormDownComponent = () => {
             <DateRangePickerWrapper popup={popupType} changePopup={togglePopup} />
             <RoomsComponent popup={popupType} changePopup={togglePopup} />
             <Button text="Search" />
+            <FormCheckBox />
         </div>
     )
 }

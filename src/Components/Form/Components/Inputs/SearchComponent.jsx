@@ -1,5 +1,5 @@
 import {useState} from "react";
-import styles from '../../Form.module.css'
+import FormStyles from '../../Form.module.css'
 import SearchItem from "./Search/SearchItem";
 import searchStyles from './Search/Search.module.css';
 const SearchComponent = (props) => {
@@ -31,18 +31,18 @@ const SearchComponent = (props) => {
         }])
 
     return (
-        <div className={searchStyles.input_module_searchWrapper} onClick={(e) => {
+        <div className={FormStyles.formDownItem + ' ' + searchStyles.input_module_searchWrapper} onClick={(e) => {
             popupChange(e)}}>
-            <div className={styles.input_module + ' ' + searchStyles.input_module_search + ' ' + (popupType === 'search' ? styles.active_field : '')}>
-                <label htmlFor="search" className={styles.input_label}>Destination</label>
+            <div className={FormStyles.input_module + ' ' + searchStyles.input_module_search + ' ' + (popupType === 'search' ? FormStyles.active_field : '')}>
+                <label htmlFor="search" className={FormStyles.input_label}>Destination</label>
             <input type="text" id={'search'} value={search}
-                   className={styles.input + ' ' + searchStyles.input_search} />
+                   className={FormStyles.input + ' ' + searchStyles.input_search} />
             </div>
-            <div className={styles.popup + ' ' +( popupType === 'search' ? styles.popup_active : '')}>
-                <div className={styles.popup_separator}>Regions</div>
+            <div className={FormStyles.popup + ' ' +( popupType === 'search' ? FormStyles.popup_active : '')}>
+                <div className={FormStyles.popup_separator}>Regions</div>
                     {regions.map((region, k) => <SearchItem key={k} searchUpdate={setSearch} type='region' item={region}/>
                     )}
-                    <div className={styles.popup_separator}>Hotels</div>
+                    <div className={FormStyles.popup_separator}>Hotels</div>
                     {hotels.map((hotel, k) => <SearchItem key={k} searchUpdate={setSearch} type="hotel" item={hotel}/>
                     )}
             </div>
