@@ -18,7 +18,10 @@ const FormDownComponent = () => {
             setIsMobile(true);
         }
         document.addEventListener("mousedown", (e) => {
-            if(!e.target.closest(`.${FormStyle.input_module}`) && !e.target.closest(`.${DateRangePickerStyle.visualInputss}`)){
+            if(!e.target.closest(`.${FormStyle.input_module}`)
+                && !e.target.closest(`.${DateRangePickerStyle.visualInputss}`)
+                && !e.target.closest(`.${FormStyle.popup}`)){
+                console.log(FormStyle.popup);
                 setPopupType('');
             }
         })

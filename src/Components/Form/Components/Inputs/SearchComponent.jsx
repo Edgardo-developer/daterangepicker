@@ -10,7 +10,6 @@ const SearchComponent = (props) => {
     const [regions, setRegions] = useState(['Moscow, Russia', 'Prague, Czech Republic', 'Saint Petersburg, Russia']);
     const [search, setSearch] = useState('Moscow, Russia')
     const popupChange = (e) => {
-        e.preventDefault()
         changePopup('search')
     }
     const [hotels, setHotels] = useState([
