@@ -83,12 +83,6 @@ display: flex;
     font-size: 12px;
     padding-left: 10px;
 }
-.popup_rooms{
-    padding: 25px 25px 0px 25px;
-    width: 370px;
-    max-height: 500px;
-    overflow-y: auto;
-}
 .input_module_wrapper{
     display: flex;
     flex-direction: column;
@@ -118,10 +112,11 @@ display: flex;
     height: 100%;
     background: white;
     z-index: 9999;
-    padding-top: 10px;
+    padding: 10px 5px;
 }
 .popupMobileHeading{
     display: flex;
+    max-width: 95vw;
 }
 .popupSvg{
     transform: rotate(90deg);
@@ -132,6 +127,9 @@ display: flex;
     display: flex;
     align-items: center;
     padding: 0 15px;
+}
+.formDownItem{
+    position: relative;
 }
 @media only screen and (max-width: 1075px) {
     .formDown{
@@ -168,5 +166,9 @@ display: flex;
     }
     .popupMobile{
         position: relative;
+    }
+    .active_field{
+        width: 100%;
+        max-width: 90%;
     }
 }

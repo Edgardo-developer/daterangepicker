@@ -3,6 +3,8 @@ import FormStyles from '../../Form.module.css'
 import SearchItem from "./Search/SearchItem";
 import searchStyles from './Search/Search.module.css';
 import GoBackMobile from "./Extra/GoBackMobile";
+import FormPopup from "./Extra/FormPopup";
+import SearchPopup from "./Search/SearchPopup";
 const SearchComponent = (props) => {
     const popupType = props.popup;
     const changePopup = props.changePopup;
@@ -41,21 +43,7 @@ const SearchComponent = (props) => {
                            className={FormStyles.input + ' ' + searchStyles.input_search} />
                 </div>
             </div>
-            <div className={FormStyles.popup + ' ' +
-                ((isMobile && popupType === 'search') && FormStyles.popupMobile) + " " +
-                ( popupType === 'search' ? FormStyles.popup_active : '')}
-            >
-                <div className={FormStyles.popup_separator}>Regions</div>
-                    {
-                        regions.map((region, k) =>
-                            <SearchItem key={k} searchUpdate={setSearch} type='region' item={region}/>
-                    )}
-                    <div className={FormStyles.popup_separator}>Hotels</div>
-                    {
-                        hotels.map((hotel, k) =>
-                            <SearchItem key={k} searchUpdate={setSearch} type="hotel" item={hotel}/>
-                    )}
-            </div>
+            <SearchPopup hotels={hotels} regions={regions} setSearch={setSearch} isMobile={isMobile} popupType={popupType}/>
         </div>
     )
 }
