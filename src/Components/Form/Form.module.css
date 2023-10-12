@@ -72,7 +72,7 @@ display: flex;
     top: 50px;
     width: 100%;
     box-sizing: border-box;
-    box-shadow: 0 2px 12px 0 rgba(45, 49, 55, 0.3);
+    box-shadow: 0 2px 12px 0 rgb(229, 229, 229);
     z-index: 9999;
 }
 .popup_active{
@@ -111,6 +111,28 @@ display: flex;
     max-width: 1000px;
     width: 100%;
 }
+.fieldMobile{
+    position: fixed !important;
+    top: 0;
+    left: 0;
+    height: 100%;
+    background: white;
+    z-index: 9999;
+    padding-top: 10px;
+}
+.popupMobileHeading{
+    display: flex;
+}
+.popupSvg{
+    transform: rotate(90deg);
+    opacity: 0.5;
+    fill: black;
+}
+.popupSvgWrapper{
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+}
 @media only screen and (max-width: 1075px) {
     .formDown{
         flex-wrap: wrap;
@@ -125,7 +147,7 @@ display: flex;
         flex-grow: 1;
     }
 }
-@media only screen and (max-width: 670px) {
+@media only screen and (max-width: 680px) {
     .formDown{
         flex-direction: column;
     }
@@ -137,5 +159,14 @@ display: flex;
     .checkboxWrapper{
         order: 2;
         padding: 0;
+    }
+    .popup{
+        top: 0;
+        box-shadow: 0 -2px 12px 0 rgb(229, 229, 229);
+        height: 100%;
+        margin-top: 10px;
+    }
+    .popupMobile{
+        position: relative;
     }
 }

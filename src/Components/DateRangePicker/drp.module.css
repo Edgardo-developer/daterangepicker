@@ -69,7 +69,7 @@
         width: auto;
     }
 }
-@media only screen and (max-width: 670px) {
+@media only screen and (max-width: 680px) {
     .input_check_in, .input_check_out{
         max-width: 100%;
     }

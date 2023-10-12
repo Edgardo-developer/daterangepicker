@@ -2,14 +2,16 @@ import {useState} from "react";
 import FormStyles from '../../Form.module.css'
 import SearchItem from "./Search/SearchItem";
 import searchStyles from './Search/Search.module.css';
+import GoBackMobile from "./Extra/GoBackMobile";
 const SearchComponent = (props) => {
     const popupType = props.popup;
     const changePopup = props.changePopup;
+    const isMobile = props.isMobile;
     const [regions, setRegions] = useState(['Moscow, Russia', 'Prague, Czech Republic', 'Saint Petersburg, Russia']);
     const [search, setSearch] = useState('Moscow, Russia')
     const popupChange = (e) => {
         e.preventDefault()
-        popupType === 'search' ? changePopup(e, '') : changePopup('search')
+        changePopup('search')
     }
     const [hotels, setHotels] = useState([
         {
@@ -29,21 +31,30 @@ const SearchComponent = (props) => {
             country: 'Russia',
             active: false,
         }])
-
     return (
-        <div className={FormStyles.formDownItem + ' ' + searchStyles.input_module_searchWrapper} onClick={(e) => {
+        <div className={((isMobile && popupType === 'search') && FormStyles.fieldMobile) + " " + FormStyles.formDownItem + ' ' + searchStyles.input_module_searchWrapper} onClick={(e) => {
             popupChange(e)}}>
-            <div className={FormStyles.input_module + ' ' + searchStyles.input_module_search + ' ' + (popupType === 'search' ? FormStyles.active_field : '')}>
-                <label htmlFor="search" className={FormStyles.input_label}>Destination</label>
-            <input type="text" id={'search'} value={search}
-                   className={FormStyles.input + ' ' + searchStyles.input_search} />
+            <div className={(isMobile && FormStyles.popupMobileHeading)}>
+                {(isMobile && popupType === 'search') && <GoBackMobile onClick={(e) => {popupChange(e)}} />}
+                <div className={FormStyles.input_module + ' ' + searchStyles.input_module_search + ' ' + (popupType === 'search' ? FormStyles.active_field : '')}>
+                    <label htmlFor="search" className={FormStyles.input_label}>Destination</label>
+                    <input type="text" id={'search'} value={search}
+                           className={FormStyles.input + ' ' + searchStyles.input_search} />
+                </div>
             </div>
-            <div className={FormStyles.popup + ' ' +( popupType === 'search' ? FormStyles.popup_active : '')}>
+            <div className={FormStyles.popup + ' ' +
+                ((isMobile && popupType === 'search') && FormStyles.popupMobile) + " " +
+                ( popupType === 'search' ? FormStyles.popup_active : '')}
+            >
                 <div className={FormStyles.popup_separator}>Regions</div>
-                    {regions.map((region, k) => <SearchItem key={k} searchUpdate={setSearch} type='region' item={region}/>
+                    {
+                        regions.map((region, k) =>
+                            <SearchItem key={k} searchUpdate={setSearch} type='region' item={region}/>
                     )}
                     <div className={FormStyles.popup_separator}>Hotels</div>
-                    {hotels.map((hotel, k) => <SearchItem key={k} searchUpdate={setSearch} type="hotel" item={hotel}/>
+                    {
+                        hotels.map((hotel, k) =>
+                            <SearchItem key={k} searchUpdate={setSearch} type="hotel" item={hotel}/>
                     )}
             </div>
         </div>

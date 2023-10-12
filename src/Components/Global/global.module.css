@@ -23,8 +23,10 @@
         width: 30%;
     }
 }
-@media only screen and (max-width: 670px) {
+@media only screen and (max-width: 680px) {
     .buttonSearchWrapper{
         order: 3;
+        width: 100%;
+        max-width: 100%;
     }
 }

@@ -7,13 +7,16 @@ import Button from "../../Global/Button";
 import FormStyle from "../Form.module.css";
 import DateRangePickerStyle from "../../DateRangePicker/drp.module.css";
 import FormCheckBox from "./FormCheckBox";
-
 const FormDownComponent = () => {
-    const [popupType, setPopupType] = useState();
+    const [popupType, setPopupType] = useState('');
+    const [isMobile, setIsMobile] = useState(false);
     const togglePopup = (text) => {
-        setPopupType(text)
+        setPopupType(popupType === text ? '' : text)
     }
     useEffect(() => {
+        if (window.innerWidth < 860){
+            setIsMobile(true);
+        }
         document.addEventListener("mousedown", (e) => {
             if(!e.target.closest(`.${FormStyle.input_module}`) && !e.target.closest(`.${DateRangePickerStyle.visualInputss}`)){
                 setPopupType('');
@@ -22,9 +25,9 @@ const FormDownComponent = () => {
     })
     return (
         <div className={styles.formDown}>
-            <SearchComponent popup={popupType} changePopup={togglePopup} />
-            <DateRangePickerWrapper popup={popupType} changePopup={togglePopup} />
-            <RoomsComponent popup={popupType} changePopup={togglePopup} />
+            <SearchComponent popup={popupType} changePopup={togglePopup} isMobile={isMobile}/>
+            <DateRangePickerWrapper popup={popupType} changePopup={togglePopup} isMobile={isMobile}/>
+            <RoomsComponent popup={popupType} changePopup={togglePopup} isMobile={isMobile}/>
             <Button text="Search" />
             <FormCheckBox />
         </div>
