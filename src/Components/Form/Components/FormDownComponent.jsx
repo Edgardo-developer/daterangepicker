@@ -21,7 +21,6 @@ const FormDownComponent = () => {
             if(!e.target.closest(`.${FormStyle.input_module}`)
                 && !e.target.closest(`.${DateRangePickerStyle.visualInputss}`)
                 && !e.target.closest(`.${FormStyle.popup}`)){
-                console.log(FormStyle.popup);
                 setPopupType('');
             }
         })
@@ -29,7 +28,7 @@ const FormDownComponent = () => {
     return (
         <div className={styles.formDown}>
             <SearchComponent popup={popupType} changePopup={togglePopup} isMobile={isMobile}/>
-            <DateRangePickerWrapper popup={popupType} changePopup={togglePopup} isMobile={isMobile}/>
+            <DateRangePickerWrapper popup={popupType} setPopupType={setPopupType} changePopup={togglePopup} isMobile={isMobile}/>
             <RoomsComponent popup={popupType} changePopup={togglePopup} isMobile={isMobile}/>
             <Button text="Search" />
             <FormCheckBox />

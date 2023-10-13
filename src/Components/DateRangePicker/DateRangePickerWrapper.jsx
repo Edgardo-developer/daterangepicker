@@ -11,6 +11,7 @@ const DateRangePickerWrapper = (props) => {
     const popupType = props.popup;
     const changePopup = props.changePopup;
     const isMobile = props.isMobile;
+    const setPopupType = props.setPopupType;
     const [date, setDate] = useState({
         start: '2023/9/8',
         end: '2023/9/18',
@@ -20,8 +21,6 @@ const DateRangePickerWrapper = (props) => {
         end: 'Oct 18 2023',
     })
     const [position, setPosition] = useState('start');
-    const [checkIn, setCheckIn] = useState(true);
-    const [visibleCheck, setVisibleCheck] = useState('');
     const [click, setClick] = useState({
         clickType: '',
         clickCount: 0,
@@ -34,19 +33,9 @@ const DateRangePickerWrapper = (props) => {
         setPosition(newPosition)
     }
     function clickBook(checkType){
-        updateCheck(checkType)
         checkClicks(checkType)
-        updateCheck(checkType === 'check_in')
-        setVisibleCheck(checkType)
+        changePopup(checkType)
         return false
-    }
-    function updateCheck(checkStatus){
-        if (checkStatus){
-            setPosition('start');
-        }else{
-            setPosition('end');
-        }
-        setCheckIn(checkStatus);
     }
     function checkClicks(clickType){
         let clickCount = click.clickCount + 1;
@@ -65,7 +54,7 @@ const DateRangePickerWrapper = (props) => {
             }
             setShow(false)
         }
-        setVisibleCheck(clickType)
+        changePopup(clickType)
     }
     useEffect(() => {
         let newDate = date;
@@ -78,21 +67,25 @@ const DateRangePickerWrapper = (props) => {
                 endDate.getDate() + " " + endDate.getFullYear(),
         })
     }, [date])
+    useEffect(() => {
+        setPosition(popupType === 'check_out' ? 'end' : "start");
+    }, [popupType])
     return(
         <div className={((isMobile && (popupType === 'check_in' || popupType === 'check_out')) ? FormStyles.fieldMobile : " ") + " " + FormStyles.formDownItem + " " + classes.daterangepicker_wrapper}>
             <div className={(isMobile && FormStyles.popupMobileHeading)}>
                 {(isMobile && (popupType === 'check_in' || popupType === 'check_out')) && <GoBackMobile onClick={(e) => {changePopup(e)}} />}
-                <ButtonsComponent popupType={popupType} changePopup={changePopup} visibleCheck={visibleCheck} clickBook={clickBook} dateShow={dateShow}/>
+                <ButtonsComponent popupType={popupType} changePopup={changePopup} clickBook={clickBook} dateShow={dateShow}/>
             </div>
             <FormPopup popupTypeCheck={popupType === 'check_in' || popupType === 'check_out'}>
                 <DateRangePicker
                     popupType={popupType}
                     show={show}
-                    data={{date, position, checkIn}}
+                    data={{date, position}}
                     updateDate={setNewDate}
                     updatePosition={updatePosition}
                     isMobile={isMobile}
-                    updateCheck={updateCheck} />
+                    setPopupType={setPopupType}
+                    />
             </FormPopup>
         </div>
     )

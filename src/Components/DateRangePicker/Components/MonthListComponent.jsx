@@ -35,7 +35,6 @@ const MonthListComponent = (props) => {
                     continueStatus = 'continueTrue';
                 }
                 // if previous both are false, we should not fix it
-                console.log(behindStatus, continueStatus)
             }}>
             <span className="popupCalendar_underLay" style={{top: underLay}}></span>
                 {months.map((monthItem, key) => <div key={key} onClick={e => {

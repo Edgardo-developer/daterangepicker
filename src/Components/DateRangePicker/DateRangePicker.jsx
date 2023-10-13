@@ -7,21 +7,20 @@ import classes from "./drp.module.css";
 
 const DateRangePicker = (props) => {
     const popupType = props.popupType;
+    const setPopupType = props.setPopupType;
     const date = props.data.date;
-    const checkIn = props.data.checkIn;
     const position = props.data.position;
     const updatePosition = props.updatePosition;
     const updateDate = props.updateDate;
-    const updateCheck = props.updateCheck;
     const [scrollTop, setScrollTop] = useState(0);
     const logic = logicFile();
     const [dateElement, setDateElement] = useState({
         start: '',
         end: '',
     });
-    const disabled = (checkIn) => {
-        if (!checkIn){
-            let startElement = document.getElementsByClassName('start_date')[0];
+    const changeAccessToPreviousDays = () => {
+        if (popupType === 'check_out'){
+            let startElement = document.querySelector('.start_date');
             if (startElement){
                 let previousElement = startElement.previousSibling;
                 while(previousElement && previousElement.getAttribute('data-disabled') === 'false'){
@@ -30,7 +29,7 @@ const DateRangePicker = (props) => {
                     previousElement = previousElement.previousSibling;
                 }
             }
-        }else{
+        }else if(popupType === 'check_in'){
             let disabledElements = document.querySelectorAll('.disabled_previous');
             for (let disabledElement of disabledElements){
                 disabledElement.classList.remove('disabled_previous')
@@ -38,27 +37,26 @@ const DateRangePicker = (props) => {
             }
         }
     }
-    const chooseToggle = (e) => {
+    const DayClick = (e) => {
         e.preventDefault();
         let element = e.target;
         let isActive = element.getAttribute('data-disabled') === "true";
-        if(!isActive && !element.classList.contains('aciteve')){
+        if(!isActive && !element.classList.contains('active')){
             if (element !== dateElement.start &&
                 element !== dateElement.end){
                 let newDate = element.getAttribute('data-year') + "/" + element.getAttribute('data-month') + '/' + element.innerText;
                 if (position === 'start' || position === 'end'){
                     let elementPrev = document.querySelector(position === 'start' ? '.active.start_date' : '.active.end_date');
                     if (elementPrev){
-                        elementPrev.classList.remove('active');
+                        elementPrev.classList.remove('active', [position]+'_date');
                     }
                     element.classList.remove('includes')
                     updateDate({...date, [position]: newDate});
                     setDateElement({...dateElement, [position]: element})
-                    element.classList.add('active');
-                    element.classList.add([position]+'_date');
+                    element.classList.add([position]+'_date', 'active');
                     if (position === 'start'){
                         updatePosition('end');
-                        updateCheck(false);
+                        setPopupType('check_out');
                     }
                 }
             }
@@ -120,8 +118,8 @@ const DateRangePicker = (props) => {
         CheckInterval();
     }, [dateElement]);
     useEffect(() => {
-        disabled(checkIn === 'check_in')
-    }, [checkIn])
+        changeAccessToPreviousDays()
+    }, [popupType])
     return (
         <div id='popupCalendar' className={(popupType === 'check_in' || popupType === 'check_out') ? classes.show : classes.hide} >
         <MonthListComponent months={logic.rightSide} />
@@ -133,7 +131,7 @@ const DateRangePicker = (props) => {
               {logic.rightSide.map((monthItem, key) => <CalendarMonthComponent
                   monthItem={monthItem}
                    key={key}
-                   chooseToggle={chooseToggle} />)
+                   chooseToggle={DayClick} />)
               }
             </div>
             </div>
