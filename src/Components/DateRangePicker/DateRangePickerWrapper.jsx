@@ -81,7 +81,7 @@ const DateRangePickerWrapper = (props) => {
     return(
         <div className={((isMobile && (popupType === 'check_in' || popupType === 'check_out')) ? FormStyles.fieldMobile : " ") + " " + FormStyles.formDownItem + " " + classes.daterangepicker_wrapper}>
             <div className={(isMobile && FormStyles.popupMobileHeading)}>
-                {(isMobile && popupType === 'search') && <GoBackMobile onClick={(e) => {changePopup(e)}} />}
+                {(isMobile && (popupType === 'check_in' || popupType === 'check_out')) && <GoBackMobile onClick={(e) => {changePopup(e)}} />}
                 <ButtonsComponent popupType={popupType} changePopup={changePopup} visibleCheck={visibleCheck} clickBook={clickBook} dateShow={dateShow}/>
             </div>
             <FormPopup popupTypeCheck={popupType === 'check_in' || popupType === 'check_out'}>

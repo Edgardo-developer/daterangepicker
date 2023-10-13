@@ -149,10 +149,12 @@
   #popupCalendar{
     max-width: 100%;
     width: 100%;
+    overflow-y: scroll;
   }
-  .popupCalendar_main{
+  #popupCalendar .popupCalendar_main{
     width: 340px;
     margin: 0 auto;
+    overflow-y: visible;
   }
   .popupCalendarDays div{
     flex: 1;
