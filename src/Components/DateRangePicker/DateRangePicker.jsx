@@ -22,11 +22,20 @@ const DateRangePicker = (props) => {
         if (popupType === 'check_out'){
             let startElement = document.querySelector('.start_date');
             if (startElement){
-                let previousElement = startElement.previousSibling;
-                while(previousElement && previousElement.getAttribute('data-disabled') === 'false'){
-                    previousElement.setAttribute('data-disabled', true);
-                    previousElement.classList.add('disabled_previous');
-                    previousElement = previousElement.previousSibling;
+                let startPass = 'before';
+                let afterElements = 0;
+                let dateNumbers = document.querySelectorAll('.DateNumber');
+                for (let dateNumber of dateNumbers){
+                    if (dateNumber.classList.contains('active')){
+                        startPass = 'after';
+                        continue;}
+                    if (startPass === 'before' || (startPass === 'after' && afterElements > 28)){
+                        dateNumber.setAttribute('data-disabled', true);
+                        dateNumber.classList.add('disabled_previous');
+                    }
+                    if (startPass === 'after'){
+                        afterElements++;
+                    }
                 }
             }
         }else if(popupType === 'check_in'){

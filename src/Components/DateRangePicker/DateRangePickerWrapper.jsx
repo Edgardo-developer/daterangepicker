@@ -13,8 +13,8 @@ const DateRangePickerWrapper = (props) => {
     const isMobile = props.isMobile;
     const setPopupType = props.setPopupType;
     const [date, setDate] = useState({
-        start: '2023/9/8',
-        end: '2023/9/18',
+        start: '2023/10/15',
+        end: '2023/10/26',
     });
     const [dateShow, setDateShow] = useState({
         start: 'Oct 8 2023',
