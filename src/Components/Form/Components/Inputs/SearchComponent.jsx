@@ -9,8 +9,8 @@ const SearchComponent = (props) => {
     const popupType = props.popup;
     const changePopup = props.changePopup;
     const isMobile = props.isMobile;
-    const [regions, setRegions] = useState(['Moscow, Russia', 'Prague, Czech Republic', 'Saint Petersburg, Russia']);
-    const [search, setSearch] = useState('Moscow, Russia')
+    const [regions, setRegions] = useState(['Ukraine, Kyiv', 'Prague, Czech Republic', 'Saint Petersburg, Russia']);
+    const [search, setSearch] = useState('Kyiv, Ukraine')
     const popupChange = (e) => {
         changePopup('search')
     }

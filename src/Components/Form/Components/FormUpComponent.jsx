@@ -5,7 +5,7 @@ const FormUpComponent = () => {
             <div className={styles.mainButton}>
                 Hotels
             </div>
-            <a href={''} className={styles.extraButton}>
+            <a href='https://www.linkedin.com/in/webedgar/' className={styles.extraButton}>
                 For business trips <svg width="15"
                                         height="14"
                                         viewBox="0 0 15 14"
